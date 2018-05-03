@@ -9,7 +9,7 @@
 import UIKit
 
 class ItemsTableViewController: UITableViewController {
-    //creating a property of an array of itens
+    //creating a property of an array of items that will be stored in core data 
     var items : [Item] = []
     
     override func viewDidLoad() {
@@ -18,7 +18,7 @@ class ItemsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       //calling the most recent version of core data titles and images
+        //calling the most recent version of core data titles and images
         getItems()
     }
     
@@ -43,6 +43,11 @@ class ItemsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         
+        //code to "pull" the title field from Core Data array
+        
+        let item = items[indexPath.row]
+        
+        cell.textLabel?.text = item.title
         
         return cell
     }
