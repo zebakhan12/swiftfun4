@@ -2,7 +2,7 @@
 //  AddItemViewController.swift
 //  Collector
 //
-//  Created by Zeba Hashimi on 5/3/18.
+//  Created by Zeba Khan on 5/3/18.
 //  Copyright © 2018 Zeba Khan. All rights reserved.
 //
 
