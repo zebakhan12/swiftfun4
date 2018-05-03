@@ -9,7 +9,7 @@
 import UIKit
 
 class ItemsTableViewController: UITableViewController {
-    //creating a property of an array of items that will be stored in core data 
+    //creating a property of an array of items that will be stored in core data
     var items : [Item] = []
     
     override func viewDidLoad() {
@@ -44,10 +44,15 @@ class ItemsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         
         //code to "pull" the title field from Core Data array
-        
         let item = items[indexPath.row]
-        
         cell.textLabel?.text = item.title
+        
+        //need to write code to "pull" image from Core Data array and display on the main page
+        //need to convert the current image format which is now data into the format of an UI image
+        
+        if let imageData = item.image{
+            cell.imageView?.image = UIImage(data: imageData)
+        }
         
         return cell
     }
