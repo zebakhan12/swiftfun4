@@ -64,9 +64,16 @@ class ItemsTableViewController: UITableViewController {
     // this is the name of function, tells you what users can do with the a particular row, this is saying someone can delete row
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print("Delete")
+            //access to core data context
+            if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            //current item in indexPath, need to call index path
+                let item = items[indexPath.row]
+            //telling the code what item needs to be deleted
+                context.delete(item)
+            //just bc you delete something from core data does not change the array, we need alert to completely update the core data table view
+                getItems()
+        }
+                        
         }
     }
-    
-    
 }
